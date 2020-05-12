@@ -40,7 +40,9 @@ pipeline {
                 input 'Deploy to Production?'
                 milestone(1)
                 script {
-                    sh " kubectl apply -f /var/lib/jenkins/workspace/k8s-pipeline_master/apache-kube.yml"
+                   def image_id = "hanihammadeh/my_apache" + ":$BUILD_NUMBER"
+
+                    sh " ansible-playbook /var/lib/jenkins/playbook.yml -e \"image_id=${image_id}\""
                 }
 
                 }

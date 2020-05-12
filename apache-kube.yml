@@ -31,6 +31,6 @@ spec:
     spec:
       containers:
       - name: apache
-        image: $DOCKER_IMAGE_NAME:$BUILD_NUMBER
+        image: httpd
         ports:
         - containerPort: 80

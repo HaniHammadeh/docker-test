@@ -1,5 +1,10 @@
 pipeline {
     agent any
+        environment {
+        //be sure to replace "willbla" with your own Docker Hub username
+        DOCKER_IMAGE_NAME = "hanihammadeh/my_apache"
+    }
+
     stages {
         stage('Build Docker Image') {
             when {

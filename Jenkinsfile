@@ -40,7 +40,7 @@ pipeline {
                 input 'Deploy to Production?'
                 milestone(1)
                 script {
-                    sh " kubectl apply -f kube-apache.yml"
+                    sh " kubectl apply -f /var/lib/jenkins/workspace/k8s-pipeline_master/kube-apache.yml"
                 }
 
                 }

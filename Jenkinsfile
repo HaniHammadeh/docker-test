@@ -43,6 +43,7 @@ pipeline {
                     kubeconfigId: 'k8s_login',
                     configs: 'apache-kube.yml',
                     enableConfigSubstitution: true
+                    )
 
                 }
             }

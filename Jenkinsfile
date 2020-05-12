@@ -34,16 +34,11 @@ pipeline {
             steps {
                 input 'Deploy to Production?'
                 milestone(1)
-                    script {
-                        sh "docker pull hanihammadeh/my_apache:${env.BUILD_NUMBER}"
-                        try {
-                            sh "docker stop my_apache"
-                            sh "docker rm my_apache"
-                        } catch (err) {
-                            echo: 'caught error: $err'
-                        }
-                        sh "docker run --restart always --name my_apache -p 3000:80 -d hanihammadeh/my_apache:${env.BUILD_NUMBER}"
-                    }
+                kubernetesDeploy(
+                    kubeconfigId: 'k8s_login',
+                    configs: 'apache-kube.yml',
+                    enableConfigSubstitution: true
+
                 }
             }
         }

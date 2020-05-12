@@ -42,7 +42,7 @@ pipeline {
                 script {
                    def image_id = "hanihammadeh/my_apache" + ":$BUILD_NUMBER"
 
-                    sh " ansible-playbook /var/lib/jenkins/playbook.yml -e \"image_id=${image_id}\""
+                    sh " ansible-playbook /var/lib/jenkins/playbook.yml -e \"image=${image_id}\""
                 }
 
                 }

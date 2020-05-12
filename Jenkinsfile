@@ -39,11 +39,9 @@ pipeline {
             steps {
                 input 'Deploy to Production?'
                 milestone(1)
-                kubernetesDeploy(
-                    kubeconfigId: 'k8s_login',
-                    configs: 'apache-kube.yml',
-                    enableConfigSubstitution: true
-                    )
+                script {
+                    sh " kubectl apply -f kube-apache.yml"
+                }
 
                 }
             }

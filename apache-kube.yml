@@ -2,6 +2,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: apache-service
+  namespace: default
 spec:
   type: NodePort
   selector:
@@ -17,6 +18,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: apache-deployment
+  namespace: default
   labels:
     app: apache
 spec:
@@ -31,6 +33,6 @@ spec:
     spec:
       containers:
       - name: apache
-        image: httpd
+        image: {{image}}
         ports:
         - containerPort: 80

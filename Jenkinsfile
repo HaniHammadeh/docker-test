@@ -35,7 +35,7 @@ pipeline {
                 input 'Deploy to Production?'
                 milestone(1)
                     script {
-                        sh "docker pull willbla/train-schedule:${env.BUILD_NUMBER}"
+                        sh "docker pull hanihammadeh/my_apache:${env.BUILD_NUMBER}"
                         try {
                             sh "docker stop my_apache"
                             sh "docker rm my_apache"
